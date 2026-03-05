@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16周科学减脂计划（训练+饮食）</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+            }
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#f97316',
+                        dark: '#1e293b',
+                        light: '#f8fafc'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 font-sans text-dark">
+<!-- 顶部导航 -->
+<header class="sticky top-0 z-50 bg-white shadow-md">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <h1 class="text-[clamp(1.5rem,3vw,2rem)] font-bold text-primary flex items-center">
+            <i class="fa fa-heartbeat mr-2 text-secondary"></i>
+            科学减脂计划
+        </h1>
+        <nav class="hidden md:flex space-x-6">
+            <a href="#weekly" class="text-gray-600 hover:text-primary transition-colors">周训练</a>
+            <a href="#phases" class="text-gray-600 hover:text-primary transition-colors">三阶段</a>
+            <a href="#diet" class="text-gray-600 hover:text-primary transition-colors">饮食计划</a>
+            <a href="#weight" class="text-gray-600 hover:text-primary transition-colors">体重变化</a>
+        </nav>
+        <button class="md:hidden text-gray-600" id="menuBtn">
+            <i class="fa fa-bars text-xl"></i>
+        </button>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg px-4 py-2">
+        <nav class="flex flex-col space-y-3">
+            <a href="#weekly" class="text-gray-600 hover:text-primary py-2">周训练</a>
+            <a href="#phases" class="text-gray-600 hover:text-primary py-2">三阶段</a>
+            <a href="#diet" class="text-gray-600 hover:text-primary py-2">饮食计划</a>
+            <a href="#weight" class="text-gray-600 hover:text-primary py-2">体重变化</a>
+        </nav>
+    </div>
+</header>
+
+<!-- 英雄区 -->
+<section class="bg-gradient-to-r from-primary to-blue-700 text-white py-16 md:py-24">
+    <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-[clamp(2rem,5vw,3.5rem)] font-bold mb-6 text-shadow">16周减脂蜕变计划</h2>
+            <p class="text-xl md:text-2xl mb-8 opacity-90">科学训练 + 精准饮食 = 清晰腹肌线条</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#weekly" class="bg-secondary hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-medium transition-colors">
+                    开始执行
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<main class="container mx-auto px-4 py-12">
+
+<!-- 每周训练结构 -->
+<section id="weekly" class="mb-16">
+    <div class="text-center mb-10">
+        <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">每周训练结构</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">每周5天训练，2天休息/轻有氧，科学分配力量与有氧</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+            <div class="flex items-center mb-4">
+                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
+                    <i class="fa fa-dumbbell text-primary"></i>
+                </div>
+                <h3 class="text-xl font-bold">周一：胸+背+有氧</h3>
+            </div>
+            <ul class="space-y-2 text-gray-700">
+                <li>力量：60–70分钟</li>
+                <li>有氧：25–40分钟</li>
+                <li>核心：卷腹 4×20</li>
+            </ul>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+            <div class="flex items-center mb-4">
+                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
+                    <i class="fa fa-heartbeat text-primary"></i>
+                </div>
+                <h3 class="text-xl font-bold">周二：有氧+核心</h3>
+            </div>
+            <ul class="space-y-2 text-gray-700">
+                <li>爬坡走 30分钟</li>
+                <li>速度 5.5 km/h</li>
+                <li>坡度 8–10</li>
+            </ul>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+            <div class="flex items-center mb-4">
+                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
+                    <i class="fa fa-futbol-o text-primary"></i>
+                </div>
+                <h3 class="text-xl font-bold">周三：腿+核心+有氧</h3>
+            </div>
+            <ul class="space-y-2 text-gray-700">
+                <li>力量：60–70分钟</li>
+                <li>有氧：25–40分钟</li>
+                <li>核心：悬垂举腿+平板支撑</li>
+            </ul>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+            <div class="flex items-center mb-4">
+                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
+                    <i class="fa fa-coffee text-primary"></i>
+                </div>
+                <h3 class="text-xl font-bold">周四：休息 / 轻有氧</h3>
+            </div>
+            <ul class="space-y-2 text-gray-700">
+                <li>椭圆机 30分钟</li>
+                <li>心率 130–140</li>
+                <li>轻度恢复</li>
+            </ul>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+            <div class="flex items-center mb-4">
+                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
+                    <i class="fa fa-child text-primary"></i>
+                </div>
+                <h3 class="text-xl font-bold">周五：肩+手臂+有氧</h3>
+            </div>
+            <ul class="space-y-2 text-gray-700">
+                <li>力量：60–70分钟</li>
+                <li>楼梯机 25分钟</li>
+                <li>核心：卷腹 4×20</li>
+            </ul>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+            <div class="flex items-center mb-4">
+                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
+                    <i class="fa fa-calendar-check-o text-primary"></i>
+                </div>
+                <h3 class="text-xl font-bold">周六 / 周日</h3>
+            </div>
+            <ul class="space-y-2 text-gray-700">
+                <li>周六：爬坡走 40分钟</li>
+                <li>周日：完全休息</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- 三阶段训练 -->
+<section id="phases" class="mb-16">
+    <div class="text-center mb-10">
+        <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">三阶段训练</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">从恢复 → 燃脂 → 腹肌清晰</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+            <div class="bg-primary text-white p-4">
+                <h3 class="text-xl font-bold">1–4周｜恢复期</h3>
+            </div>
+            <div class="p-6">
+                <p>重量：50–60%</p>
+                <p>总组数：16–20组</p>
+                <p>重点：保护关节、找回感觉</p>
+            </div>
+        </div>
+        <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+            <div class="bg-secondary text-white p-4">
+                <h3 class="text-xl font-bold">5–8周｜燃脂期</h3>
+            </div>
+            <div class="p-6">
+                <p>重量+10–15%</p>
+                <p>有氧：45分钟，坡度12–15</p>
+                <p>目标体重：85kg</p>
+            </div>
+        </div>
+        <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+            <div class="bg-green-600 text-white p-4">
+                <h3 class="text-xl font-bold">9–16周｜腹肌阶段</h3>
+            </div>
+            <div class="p-6">
+                <p>卧推70–80kg / 深蹲100–120kg</p>
+                <p>混合有氧：坡度+楼梯机</p>
+                <p>目标：80kg → 75kg</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== 饮食计划（你新增的部分） ===================== -->
+<section id="diet" class="mb-16">
+    <div class="text-center mb-10">
+        <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">饮食计划</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">减脂成功，7分靠吃，执行即见效</p>
+    </div>
+
+    <!-- 热量目标 -->
+    <div class="bg-white rounded-xl shadow-md p-6 mb-8 card-hover">
+        <h3 class="text-xl font-bold mb-4">一、每日目标（核心数据）</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <p class="font-medium">热量节奏：</p>
+                <p class="text-lg">每日热量赤字 500–700 kcal</p>
+                <p class="text-lg font-bold text-primary">目标：2000 kcal / 天</p>
+            </div>
+            <div>
+                <p class="font-medium">宏量营养：</p>
+                <p>蛋白质：150–170 g</p>
+                <p>脂肪：50–60 g</p>
+                <p>碳水：180–220 g</p>
+                <p class="text-orange-600 font-medium">原则：蛋白质优先 → 碳水 → 控脂肪</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 饮食结构 -->
+    <div class="bg-white rounded-xl shadow-md p-6 mb-8 card-hover">
+        <h3 class="text-xl font-bold mb-4">二、每日饮食结构</h3>
+        <p class="mb-2">3餐 + 1加餐（最稳、最容易坚持）</p>
+        <ul class="space-y-1 text-gray-700">
+            <li>早餐</li>
+            <li>午餐</li>
+            <li>训练前/后加餐</li>
+            <li>晚餐</li>
+        </ul>
+    </div>
+
+    <!-- 标准一天模板 -->
+    <div class="bg-white rounded-xl shadow-md p-6 mb-8 card-hover">
+        <h3 class="text-xl font-bold mb-4">三、标准一天饮食模板（推荐）</h3>
+        <div class="space-y-6">
+            <div>
+                <p class="font-medium">早餐（≈450 kcal）</p>
+                <p>鸡蛋3个 + 燕麦50g + 无糖酸奶/牛奶</p>
+                <p>蛋白质 ≈ 35g</p>
+            </div>
+            <div>
+                <p class="font-medium">午餐（≈650 kcal）</p>
+                <p>鸡胸/牛肉 200g + 米饭100g + 蔬菜随便吃</p>
+                <p>蛋白质 45–50g</p>
+            </div>
+            <div>
+                <p class="font-medium">训练加餐（≈200 kcal）</p>
+                <p>蛋白粉1份 或 无糖酸奶+香蕉</p>
+            </div>
+            <div>
+                <p class="font-medium">晚餐（≈550 kcal）</p>
+                <p>鱼肉/鸡胸200g + 红薯150g + 大量蔬菜</p>
+                <p class="text-gray-500">不训练 → 碳水再减一点</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 外食指南 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+            <h3 class="text-xl font-bold mb-4">四、汉堡王怎么吃</h3>
+            <p class="font-medium">推荐：</p>
+            <p>1个牛肉汉堡 + 2个鸡腿</p>
+            <p>无糖可乐 / 水</p>
+            <p class="font-medium text-red-600">不要：薯条、甜饮</p>
+            <p>热量：700–850 kcal</p>
+            <p>一周 2–3 次完全没问题</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+            <h3 class="text-xl font-bold mb-4">五、外卖/便利店指南</h3>
+            <p class="font-medium">中餐：</p>
+            <p>烤鱼、牛肉饭、鸡胸饭、少油盖浇饭</p>
+            <p>规则：肉多、油少、饭半份</p>
+            <p class="font-medium">便利店：</p>
+            <p>2茶叶蛋 + 鸡胸肉 + 无糖酸奶 + 香蕉</p>
+            <p>≈400–500 kcal</p>
+        </div>
+    </div>
+
+    <!-- 黄金规则 -->
+    <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+        <h3 class="text-xl font-bold mb-4">六、减脂成功率最高的5条规则</h3>
+        <ul class="space-y-2">
+            <li>1. 蛋白质一定要够（≥150g）</li>
+            <li>2. 晚上少油</li>
+            <li>3. 饮料只喝无糖</li>
+            <li>4. 拒绝隐藏热量（坚果、奶茶）</li>
+            <li>5. 睡前不吃高碳水</li>
+        </ul>
+        <div class="mt-4 p-3 bg-orange-50 rounded-lg">
+            <p class="font-medium text-secondary">关键技巧：</p>
+            <p>早餐正常、午餐正常、晚餐减碳水 → 减脂速度明显更快</p>
+        </div>
+    </div>
+</section>
+
+<!-- 体重变化 -->
+<section id="weight" class="mb-16">
+    <div class="text-center mb-10">
+        <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">预期体重变化</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">严格执行，每月稳步下降</p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-primary/5 p-5 rounded-lg text-center">
+            <h4>第1个月</h4>
+            <p class="text-xl font-bold">90 → 86 kg</p>
+        </div>
+        <div class="bg-primary/5 p-5 rounded-lg text-center">
+            <h4>第2个月</h4>
+            <p class="text-xl font-bold">86 → 82 kg</p>
+        </div>
+        <div class="bg-primary/5 p-5 rounded-lg text-center">
+            <h4>第3个月</h4>
+            <p class="text-xl font-bold">82 → 78 kg</p>
+        </div>
+        <div class="bg-primary/5 p-5 rounded-lg text-center">
+            <h4>第4个月</h4>
+            <p class="text-xl font-bold">78 → 75 kg</p>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer class="bg-dark text-white py-10 text-center">
+    <p class="text-xl font-bold mb-2">16周科学减脂计划</p>
+    <p class="text-gray-400">训练 + 饮食 + 坚持 = 蜕变</p>
+</footer>
+
+<script>
+    document.getElementById('menuBtn').onclick = () => {
+        mobileMenu.classList.toggle('hidden')
+    }
+</script>
+</body>
+</html>
